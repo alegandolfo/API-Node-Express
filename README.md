@@ -6,6 +6,7 @@
 - O que é uma API RESTful?
 - Para que serve o Nodemon?
 - Para que serve o framework Express?
+- O que é o padrão de projeto Middleware?
 
 # Comandos Úteis
 
