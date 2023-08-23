@@ -2,18 +2,9 @@ import userModel from "../../models/userModel.js"
 
 const createUser = async (req, res) => {
     try {
-        const user = req.body
-        const res = await userModel.create(req.body)
-        console.log(res)
-        const {result} = res
-        if (result.changedRows === 1) {
-            res.status(201).json({
-                message: 'Usuário criado com sucesso',
-                user: {
-                    id: result.insertId,
-                    ...user
-                }
-            })
+        const [result] = await userModel.create(req.body)
+        if (result.affectedRows === 1) {
+            res.status(201).json(result[0])
         }
         
     } catch (err) {

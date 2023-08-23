@@ -8,9 +8,9 @@ import deleteUser from '../controllers/user/deleteUser.js'
 const router = express.Router()
 
 router.get('/list', listUsers)
-router.get('/', getUser)
+router.get('/*', getUser)
 router.post('/', createUser)
-router.put('/', updateUser)
-router.delete('/', deleteUser)
+router.put('/*', updateUser)
+router.delete('/*', deleteUser)
 
 export default router
