@@ -1,11 +1,17 @@
-const listProducts = (req, res) => {
-    const products = [
-        {id: 1, name: "Boné do Dijango", price: "$666.66", illegal: "true"},
-        {id: 2, name: "Pato Vivo", price: "29.90", illegal: "true"},
-        {id: 3, name: "Calabresa Premium", price: "$13.50", illegal: "false"},
-    ]
-    
-    res.json(products)
+import productModel from "../../models/productModel.js"
+
+const listProducts = async (req, res) => {
+    try {
+        const [rows, fields] = await productModel.list()
+        if (rows.length === 0) {
+            res.status(404).json({message: 'Products not found'})
+        } else {
+            res.json(rows)
+        }
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({message: 'Server error'})
+    }
 }
 
 export default listProducts
