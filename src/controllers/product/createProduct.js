@@ -4,7 +4,12 @@ const createProduct = async (req, res) => {
     try {
         const [result] = await productModel.create(req.body)
         if (result.affectedRows === 1) {
-            res.status(201).json(result[0])
+            res.status(201).json({
+                message: 'Produto criado com sucesso',
+                product: {
+                    ...req.body
+                }
+            })
         }
         
     } catch (err) {
