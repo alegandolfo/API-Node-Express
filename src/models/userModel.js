@@ -5,8 +5,8 @@ const list = async () => {
 }
 
 const create = async (user) => {
-    const {name, email, password} = user
-    return await db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password])
+    const {name, email, password, image} = user
+    return await db.query('INSERT INTO users (name, email, password, image) VALUES (?, ?, ?, ?)', [name, email, password, image])
 }
 
 const get = async (url) => {
@@ -16,8 +16,8 @@ const get = async (url) => {
 
 const update = async (user, url) => {
     const id = url.substring(url.lastIndexOf('/') + 1)
-    const {name, email, password} = user
-    return await db.query('UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?', [name, email, password, id])
+    const {name, email, password, image} = user
+    return await db.query('UPDATE users SET name = ?, email = ?, password = ?, image = ? WHERE id = ?', [name, email, password, image, id])
 }
 
 const remove = async (url) => {
