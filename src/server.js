@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import bodyParser from 'body-parser'
 
 import {PORT} from './config.js'
@@ -8,6 +9,7 @@ import logger from './middlewares/logger.js'
 
 const api = express()
 api.use(logger)
+api.use(cors())
 api.use(bodyParser.json())
 
 api.use('/user', userRoute)
