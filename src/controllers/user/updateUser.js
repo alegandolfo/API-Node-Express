@@ -5,18 +5,18 @@ const updateUser = async (req, res) => {
         const [result] = await userModel.update(req.body, req.url)
         if (result.affectedRows === 1) {
             res.status(200).json({
-                message: 'Usuário atualizado com sucesso',
+                success: 'Usuário atualizado com sucesso',
                 user: {
                     ...req.body
                 }
             })
         } else {
-            res.status(404).json({message: 'Usuário não encontrado.'})
+            res.status(404).json({error: 'Usuário não encontrado.'})
         }
         
     } catch (err) {
         console.error(err)
-        res.status(500).json({message: 'Server error'})
+        res.status(500).json({error: 'Server error'})
     }
 }
 

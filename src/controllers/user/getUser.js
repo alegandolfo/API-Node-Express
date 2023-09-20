@@ -8,11 +8,11 @@ const getUser = async (req, res) => {
             delete result[0].password
             res.status(200).json(result[0])
         } else {
-            res.status(404).json({message: 'Usuário não encontrado.'})
+            res.status(404).json({error: 'Usuário não encontrado.'})
         }
     } catch (err) {
         console.error(err)
-        res.status(500).json({message: 'Server error'})
+        res.status(500).json({error: 'Server error'})
     }
 }
 

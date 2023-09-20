@@ -5,14 +5,14 @@ const deleteUser = async (req, res) => {
         const [result] = await userModel.remove(req.url)
         console.log(result)
         if (result.affectedRows === 1) {
-            res.status(204).json({message: 'Produto deletado com sucesso.'})
+            res.status(204).json({success: 'Produto deletado com sucesso.'})
         } else {
-            res.status(404).json({message: 'Produto não encontrado.'})
+            res.status(404).json({error: 'Produto não encontrado.'})
         }
         
     } catch (err) {
         console.error(err)
-        res.status(500).json({message: 'Server error'})
+        res.status(500).json({error: 'Server error'})
     }
 }
 
