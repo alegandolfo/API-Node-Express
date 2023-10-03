@@ -6,9 +6,9 @@ const listUsers = async (req, res) => {
         if (rows.length === 0) {
             res.status(404).json({error: 'Users not found'})
         } else {
-            for (let i = 0; i < rows.length; i++) {
-                delete rows[i].password
-            }
+            // for (let i = 0; i < rows.length; i++) {
+            //     delete rows[i].password
+            // }
             res.json(rows)
         }
     } catch (err) {

@@ -5,7 +5,7 @@ const getUser = async (req, res) => {
         const [result] = await userModel.get(req.url)
         console.log(result)
         if (result.length === 1) {
-            delete result[0].password
+            //delete result[0].password
             res.status(200).json(result[0])
         } else {
             res.status(404).json({error: 'Usuário não encontrado.'})
